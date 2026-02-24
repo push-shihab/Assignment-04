@@ -73,18 +73,18 @@
         <div>
           <ul class="text-[12px] text-white font-medium gap-2 flex">
             <li class="bg-blue-500 rounded-md px-8 py-2.5 cursor-pointer">
-              <a>All</a>
+              <a onclick="buttonToggle('jobs-section')">All</a>
             </li>
             <li class="bg-blue-500 rounded-md px-8 py-2.5 cursor-pointer">
-              <a>Interview</a>
+              <a onclick="buttonToggle('empty-page')">Interview</a>
             </li>
             <li class="bg-blue-500 rounded-md px-8 py-2.5 cursor-pointer">
-              <a>Rejected</a>
+              <a onclick="buttonToggle('empty-page')">Rejected</a>
             </li>
           </ul>
         </div>
 
-        <div class="space-y-4">
+        <div id="jobs-section" class="space-y-4">
           <div class="bg-white rounded-lg p-6">
             <h2 class="font-semibold text-[18px] text-[#002C5C]">
               Mobile First Corp
@@ -306,7 +306,21 @@
             </button>
           </div>
         </div>
+
+        <div id="empty-page" class="bg-white py-[111px] px-6 rounded-md hidden">
+          <div class="flex flex-col justify-center items-center">
+            <img src="images/jobs.png" class="mb-5" />
+            <p class="text-[#002C5C] text-[24px] font-semibold">
+              No jobs available
+            </p>
+            <p class="text-[#64748B]">
+              Check back soon for new job opportunities
+            </p>
+          </div>
+        </div>
       </div>
     </section>
+
+    <script src="scripts/machines.js"></script>
   </body>
 </html>
