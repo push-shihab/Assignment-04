@@ -46,15 +46,22 @@
         <div class="grid md:grid-cols-3 grid-cols-1 gap-4">
           <div class="bg-white p-5 space-y-2">
             <p class="text-[14px] font-medium">Total</p>
-            <p class="text-[24px] font-bold">8</p>
+            <p class="text-[24px] font-bold" id="job-counter">8</p>
           </div>
           <div class="bg-white p-5 space-y-2">
             <p class="text-[14px] font-medium">Interview</p>
-            <p class="text-[24px] font-bold text-[#10B981]">0</p>
+            <p class="text-[24px] font-bold text-[#10B981]" id="interview-jobs">
+              0
+            </p>
           </div>
           <div class="bg-white p-5 space-y-2">
             <p class="text-[14px] font-medium">Rejected</p>
-            <p class="text-[24px] font-bold text-[#EF4444]">0</p>
+            <p
+              class="text-[24px] font-bold text-[#EF4444]"
+              id="rejected-jobs-counter"
+            >
+              0
+            </p>
           </div>
         </div>
         <hr class="w-full mx-auto opacity-20 mt-[30px]" />
@@ -66,26 +73,42 @@
         <div>
           <p class="font-semibold text-[20px] text-[#002C5C]">Available Jobs</p>
         </div>
-        <div><p class="font-medium text-[#64748B]">8 jobs</p></div>
+        <div>
+          <p class="font-medium text-[#64748B]">
+            <span class="available-job rejected-job interview-job-counter"
+              >8</span
+            >
+            Jobs
+          </p>
+        </div>
       </div>
 
       <div class="space-y-4 px-6">
         <div>
           <ul class="text-[12px] text-white font-medium gap-2 flex">
-            <li class="bg-blue-500 rounded-md px-8 py-2.5 cursor-pointer">
-              <a onclick="buttonToggle('jobs-section')">All</a>
+            <li
+              onclick="toggleButton('all-jobs')"
+              class="bg-blue-500 rounded-md px-8 py-2.5 cursor-pointer"
+            >
+              <a>All</a>
             </li>
-            <li class="bg-blue-500 rounded-md px-8 py-2.5 cursor-pointer">
-              <a onclick="buttonToggle('empty-page')">Interview</a>
+            <li
+              onclick="toggleButton('jobs-for-interview')"
+              class="bg-blue-500 rounded-md px-8 py-2.5 cursor-pointer"
+            >
+              <a>Interview</a>
             </li>
-            <li class="bg-blue-500 rounded-md px-8 py-2.5 cursor-pointer">
-              <a onclick="buttonToggle('empty-page')">Rejected</a>
+            <li
+              onclick="toggleButton('rejected-jobs')"
+              class="bg-blue-500 rounded-md px-8 py-2.5 cursor-pointer"
+            >
+              <a>Rejected</a>
             </li>
           </ul>
         </div>
 
-        <div id="jobs-section" class="space-y-4">
-          <div class="bg-white rounded-lg p-6">
+        <div class="space-y-4" id="all-jobs">
+          <div class="bg-white rounded-lg p-6 relative" id="job-1">
             <h2 class="font-semibold text-[18px] text-[#002C5C]">
               Mobile First Corp
             </h2>
@@ -102,17 +125,25 @@
               on products used by millions of users worldwide.
             </p>
             <button
+              onclick="moveToInterview('job-1')"
               class="uppercase text-[#10B981] border-2 border-[#10B981] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               interview
             </button>
             <button
+              onclick="moveToRejected('job-1')"
               class="uppercase text-[#EF4444] border-2 border-[#EF4444] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               Rejected
             </button>
+            <div
+              onclick="deleteBox('job-1')"
+              class="absolute top-10 right-10 border rounded-full py-1.5 px-2 cursor-pointer hover:bg-red-400 hover:text-white"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
           </div>
-          <div class="bg-white rounded-lg p-6">
+          <div class="bg-white rounded-lg p-6 relative" id="job-2">
             <h2 class="font-semibold text-[18px] text-[#002C5C]">
               WebFlow Agency
             </h2>
@@ -129,17 +160,25 @@
               have portfolio and experience with modern web design trends.
             </p>
             <button
+              onclick="moveToInterview('job-2')"
               class="uppercase text-[#10B981] border-2 border-[#10B981] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               interview
             </button>
             <button
+              onclick="moveToRejected('job-2')"
               class="uppercase text-[#EF4444] border-2 border-[#EF4444] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               Rejected
             </button>
+            <div
+              onclick="deleteBox('job-2')"
+              class="absolute top-10 right-10 border rounded-full py-1.5 px-2 cursor-pointer hover:bg-red-400 hover:text-white"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
           </div>
-          <div class="bg-white rounded-lg p-6">
+          <div class="bg-white rounded-lg p-6 relative" id="job-3">
             <h2 class="font-semibold text-[18px] text-[#002C5C]">
               DataViz Solutions
             </h2>
@@ -158,17 +197,25 @@
               skills: D3.js, React, and strong analytical thinking.
             </p>
             <button
+              onclick="moveToInterview('job-3')"
               class="uppercase text-[#10B981] border-2 border-[#10B981] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               interview
             </button>
             <button
+              onclick="moveToRejected('job-3')"
               class="uppercase text-[#EF4444] border-2 border-[#EF4444] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               Rejected
             </button>
+            <div
+              onclick="deleteBox('job-3')"
+              class="absolute top-10 right-10 border rounded-full py-1.5 px-2 cursor-pointer hover:bg-red-400 hover:text-white"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
           </div>
-          <div class="bg-white rounded-lg p-6">
+          <div class="bg-white rounded-lg p-6 relative" id="job-4">
             <h2 class="font-semibold text-[18px] text-[#002C5C]">
               CloudFirst Inc
             </h2>
@@ -185,17 +232,25 @@
               Work with modern DevOps practices and cloud infrastructure.
             </p>
             <button
+              onclick="moveToInterview('job-4')"
               class="uppercase text-[#10B981] border-2 border-[#10B981] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               interview
             </button>
             <button
+              onclick="moveToRejected('job-4')"
               class="uppercase text-[#EF4444] border-2 border-[#EF4444] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               Rejected
             </button>
+            <div
+              onclick="deleteBox('job-4')"
+              class="absolute top-10 right-10 border rounded-full py-1.5 px-2 cursor-pointer hover:bg-red-400 hover:text-white"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
           </div>
-          <div class="bg-white rounded-lg p-6">
+          <div class="bg-white rounded-lg p-6 relative" id="job-5">
             <h2 class="font-semibold text-[18px] text-[#002C5C]">
               Innovation Labs
             </h2>
@@ -213,17 +268,25 @@
               required.
             </p>
             <button
+              onclick="moveToInterview('job-5')"
               class="uppercase text-[#10B981] border-2 border-[#10B981] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               interview
             </button>
             <button
+              onclick="moveToRejected('job-5')"
               class="uppercase text-[#EF4444] border-2 border-[#EF4444] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               Rejected
             </button>
+            <div
+              onclick="deleteBox('job-5')"
+              class="absolute top-10 right-10 border rounded-full py-1.5 px-2 cursor-pointer hover:bg-red-400 hover:text-white"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
           </div>
-          <div class="bg-white rounded-lg p-6">
+          <div class="bg-white rounded-lg p-6 relative" id="job-6">
             <h2 class="font-semibold text-[18px] text-[#002C5C]">
               MegaCorp Solutions
             </h2>
@@ -241,17 +304,25 @@
               and professional development opportunities.
             </p>
             <button
+              onclick="moveToInterview('job-6')"
               class="uppercase text-[#10B981] border-2 border-[#10B981] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               interview
             </button>
             <button
+              onclick="moveToRejected('job-6')"
               class="uppercase text-[#EF4444] border-2 border-[#EF4444] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               Rejected
             </button>
+            <div
+              onclick="deleteBox('job-6')"
+              class="absolute top-10 right-10 border rounded-full py-1.5 px-2 cursor-pointer hover:bg-red-400 hover:text-white"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
           </div>
-          <div class="bg-white rounded-lg p-6">
+          <div class="bg-white rounded-lg p-6 relative" id="job-7">
             <h2 class="font-semibold text-[18px] text-[#002C5C]">StartupXYZ</h2>
             <p class="text-[#64748B] text-[16px]">Full Stack Engineer</p>
             <p class="text-[#64748B] text-[14px] my-5">
@@ -267,17 +338,25 @@
               equity package included.
             </p>
             <button
+              onclick="moveToInterview('job-7')"
               class="uppercase text-[#10B981] border-2 border-[#10B981] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               interview
             </button>
             <button
+              onclick="moveToRejected('job-7')"
               class="uppercase text-[#EF4444] border-2 border-[#EF4444] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               Rejected
             </button>
+            <div
+              onclick="deleteBox('job-7')"
+              class="absolute top-10 right-10 border rounded-full py-1.5 px-2 cursor-pointer hover:bg-red-400 hover:text-white"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
           </div>
-          <div class="bg-white rounded-lg p-6">
+          <div class="bg-white rounded-lg p-6 relative" id="job-8">
             <h2 class="font-semibold text-[18px] text-[#002C5C]">
               TechCorp Industries
             </h2>
@@ -295,19 +374,43 @@
               work with a talented team on cutting-edge projects.
             </p>
             <button
+              onclick="moveToInterview('job-8')"
               class="uppercase text-[#10B981] border-2 border-[#10B981] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               interview
             </button>
             <button
+              onclick="moveToRejected('job-8')"
               class="uppercase text-[#EF4444] border-2 border-[#EF4444] px-3 py-2 text-[14px] font-semibold rounded-md cursor-pointer"
             >
               Rejected
             </button>
+            <div
+              onclick="deleteBox('job-8')"
+              class="absolute top-10 right-10 border rounded-full py-1.5 px-2 cursor-pointer hover:bg-red-400 hover:text-white"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
           </div>
         </div>
-
-        <div id="empty-page" class="bg-white py-[111px] px-6 rounded-md hidden">
+        <div
+          class="bg-white py-[111px] px-6 rounded-md hidden"
+          id="jobs-for-interview"
+        >
+          <div class="flex flex-col justify-center items-center">
+            <img src="images/jobs.png" class="mb-5" />
+            <p class="text-[#002C5C] text-[24px] font-semibold">
+              No jobs available
+            </p>
+            <p class="text-[#64748B]">
+              Check back soon for new job opportunities
+            </p>
+          </div>
+        </div>
+        <div
+          class="bg-white py-[111px] px-6 rounded-md hidden"
+          id="rejected-jobs"
+        >
           <div class="flex flex-col justify-center items-center">
             <img src="images/jobs.png" class="mb-5" />
             <p class="text-[#002C5C] text-[24px] font-semibold">
